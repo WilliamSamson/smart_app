@@ -13,7 +13,7 @@ class Info extends StatelessWidget {
         TextButton(
           child: const Text("Continue"),
           onPressed: () {
-            Navigator.pop(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(
                 builder: (context) => const Home(),
