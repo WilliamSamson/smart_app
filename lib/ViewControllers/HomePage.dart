@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'StaggeredView.dart';
+import '../Screens/home.dart';
 import '../Models/Note.dart';
 import 'NotePage.dart';
 import '../Models/Utility.dart';
-import 'dart:ui';
 
 enum viewType { List, Staggered }
 
@@ -24,6 +23,23 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(),
+                  ),
+                );
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
         actions: _appBarActions(),
         elevation: 3,
         backgroundColor: Color.fromARGB(255, 103, 179, 154),
@@ -36,38 +52,19 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: _body(),
-        right: true,
-        left: true,
-        top: true,
-        bottom: true,
-      ),
       bottomSheet: _bottomBar(),
     );
-  }
-
-  Widget _body() {
-    print(notesViewType);
-    return Container(
-        child: StaggeredGridPage(
-      notesViewType: notesViewType,
-    ));
   }
 
   Widget _bottomBar() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        TextButton(
-          child: Text(
-            "New Note\n",
-            style: TextStyle(
-                color: Color.fromARGB(255, 5, 30, 51),
-                fontWeight: FontWeight.bold),
-          ),
+        FloatingActionButton(
+          backgroundColor: Color.fromARGB(255, 103, 179, 154),
+          child: const Icon(Icons.create),
           onPressed: () => _newNoteTapped(context),
-        )
+        ),
       ],
     );
   }
