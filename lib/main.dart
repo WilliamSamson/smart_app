@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:smart_app/info.dart';
+import 'Smart_app/info.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp( MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+
 
   static const String _title = 'Flutter Code Sample';
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: _title,
       home: MyStatelessWidget(),
     );
@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyStatelessWidget extends StatelessWidget {
-  const MyStatelessWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class MyStatelessWidget extends StatelessWidget {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const Info(),
+              builder: (context) =>  Info(),
             ),
           );
         },

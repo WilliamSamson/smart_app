@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smart_app/Screens/home.dart';
+import '../Screens/home.dart';
 
 class Info extends StatelessWidget {
-  const Info({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class Info extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => const Home(),
+                builder: (context) =>  Home(),
               ),
             );
           },

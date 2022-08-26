@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smart_app/Screens/notepad.dart';
+
+import '../ViewControllers/HomePage.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +47,7 @@ class Home extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => Notepad(),
+                  builder: (context) => HomePage(),
                 ),
               );
             },
