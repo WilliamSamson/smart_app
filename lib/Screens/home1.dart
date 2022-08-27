@@ -1,6 +1,5 @@
+import 'package:Smart_app/main2.dart';
 import 'package:flutter/material.dart';
-
-import '../ViewControllers/HomePage.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -47,7 +46,7 @@ class Home extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => HomePage(),
+                  builder: (context) => MyApp2(),
                 ),
               );
             },
@@ -57,11 +56,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
-
-
-/*const Padding(
-        padding: EdgeInsets.only(
-          top: 16.0,
-        ),
-      ),*/
