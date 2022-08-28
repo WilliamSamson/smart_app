@@ -5,6 +5,8 @@ import 'package:Smart_app/Views/add_note_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:share/share.dart';
 
+import '../Screens/home1.dart';
+
 final routeObserver = RouteObserver<PageRoute>();
 final duration = const Duration(milliseconds: 200);
 
@@ -75,6 +77,23 @@ class _HomeViewState extends State<HomeView> with RouteAware {
             },
           )
         ],
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Home(),
+                  ),
+                );
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
         title: Text('Notes'),
       ),
       body: Container(
@@ -145,7 +164,7 @@ class _HomeViewState extends State<HomeView> with RouteAware {
       transitionsBuilder: (BuildContext context, Animation<double> animation,
               Animation<double> secondaryAnimation, Widget child) =>
           _buildTransition(child, animation, fabSize, fabOffset),
-    ));
+    ),);
   }
 
   Widget _buildTransition(

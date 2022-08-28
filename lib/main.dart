@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:splashscreen/splashscreen.dart';
 import 'Smart_app/info.dart';
 
 void main() => runApp(MyApp());
@@ -25,47 +26,21 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
-  void initState() {
-    super.initState();
-    Timer(
-        Duration(seconds: 4),
-        () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => MyStatelessWidget())));
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-    );
-  }
-}
-
-class MyStatelessWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
-        child: Text(
-          'Welcome To Smart App',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 29,
-          ),
+    return SplashScreen(
+      seconds: 7,
+      navigateAfterSeconds: Info(),
+      title: Text(
+        'Welcome To Smart App',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 27,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Info(),
-            ),
-          );
-        },
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.navigate_next),
-      ),
+      backgroundColor: Colors.white,
+      styleTextUnderTheLoader: new TextStyle(),
+      photoSize: 45,
+      loaderColor: Color.fromARGB(255, 35, 11, 93),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:Smart_app/Classes/note.dart';
 import 'package:Smart_app/Utils/db_halper.dart';
@@ -94,12 +96,7 @@ class _AddNoteState extends State<AddNote> {
                 leading: IconButton(
                   icon: Icon(Icons.delete),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => _deleteNote(),
-                      ),
-                    );
+                    _deleteNote();
                   },
                 ),
               ),
@@ -107,7 +104,13 @@ class _AddNoteState extends State<AddNote> {
                 leading: IconButton(
                   icon: Icon(Icons.share),
                   onPressed: () {
-                    _shareNote();
+                    Navigator.of(context).pop();
+                    Timer(
+                      Duration(seconds: 2),
+                      () {
+                        _shareNote();
+                      },
+                    );
                   },
                 ),
               ),
@@ -124,28 +127,40 @@ class _AddNoteState extends State<AddNote> {
 
   _deleteNote() {
     showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Are you sure, you want to Delete This Note?'),
-            actions: <Widget>[
-              RawMaterialButton(
-                onPressed: () {
-                  helper.deleteNote(widget.note.id);
-                  Navigator.pop(context);
-                  Navigator.pop(context);
-                },
-                child: Text('Yes'),
-              ),
-              RawMaterialButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('No'),
-              ),
-            ],
-          );
-        });
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Are you sure, you want to Delete This Note?'),
+          actions: <Widget>[
+            RawMaterialButton(
+              onPressed: () {
+                helper.deleteNote(widget.note.id);
+                Navigator.pop(context);
+                Navigator.pop(context);
+              },
+              child: Text('Yes'),
+            ),
+            RawMaterialButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Timer(
+                  Duration(seconds: 2),
+                  () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddNote(),
+                      ),
+                    );
+                  },
+                );
+              },
+              child: Text('No'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   _showSnakbar(String msg) {
