@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:Smart_app/Classes/note.dart';
-import 'package:Smart_app/Utils/db_halper.dart';
+import 'package:Smart_app/Apps/Note pad app/Classes/note.dart';
+import 'package:Smart_app/Apps/Note pad app/Utils/db_halper.dart';
 import 'package:share/share.dart';
 import '../Utils/Utility.dart';
 

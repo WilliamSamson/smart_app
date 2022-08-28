@@ -1,14 +1,12 @@
+import 'package:Smart_app/Screens/home1.dart';
 import 'package:flutter/material.dart';
-import 'package:Smart_app/Utils/db_halper.dart';
-import 'package:Smart_app/Utils/theme_bloc.dart';
-import 'package:Smart_app/Views/add_note_view.dart';
+import 'package:Smart_app/Apps/Note pad app/Utils/db_halper.dart';
+import 'package:Smart_app/Apps/Note pad app/Utils/theme_bloc.dart';
+import 'package:Smart_app/Apps/Note pad app/Views/add_note_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:share/share.dart';
-
-import '../Screens/home1.dart';
 
 final routeObserver = RouteObserver<PageRoute>();
-final duration = const Duration(milliseconds: 200);
+final duration = const Duration(milliseconds: 150);
 
 class HomeView extends StatefulWidget {
   final bool darkThemeEnabled;
@@ -156,15 +154,17 @@ class _HomeViewState extends State<HomeView> with RouteAware {
     final fabSize = fabRenderBox.size;
     final fabOffset = fabRenderBox.localToGlobal(Offset.zero);
 
-    Navigator.of(context).push(PageRouteBuilder(
-      transitionDuration: duration,
-      pageBuilder: (BuildContext context, Animation<double> animation,
-              Animation<double> secondaryAnimation) =>
-          AddNote(),
-      transitionsBuilder: (BuildContext context, Animation<double> animation,
-              Animation<double> secondaryAnimation, Widget child) =>
-          _buildTransition(child, animation, fabSize, fabOffset),
-    ),);
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        transitionDuration: duration,
+        pageBuilder: (BuildContext context, Animation<double> animation,
+                Animation<double> secondaryAnimation) =>
+            AddNote(),
+        transitionsBuilder: (BuildContext context, Animation<double> animation,
+                Animation<double> secondaryAnimation, Widget child) =>
+            _buildTransition(child, animation, fabSize, fabOffset),
+      ),
+    );
   }
 
   Widget _buildTransition(

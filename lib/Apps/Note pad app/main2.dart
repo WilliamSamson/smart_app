@@ -35,7 +35,7 @@ class MyApp2 extends StatelessWidget {
                 );
               } else {
                 return MaterialApp(
-                  title: 'Notes App',
+                  title: 'Notepad',
                   theme: snapshot.data ? Themes.light : Themes.dark,
                   navigatorObservers: [routeObserver],
                   home: HomeView(snapshot.data),

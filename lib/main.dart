@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'Smart_app/info.dart';
@@ -7,12 +5,10 @@ import 'Smart_app/info.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  static const String _title = 'Smart app';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Splash Screen',
       routes: {'/': (context) => MyHomePage()},
       debugShowCheckedModeBanner: false,
     );
@@ -31,16 +27,16 @@ class _MyHomePageState extends State<MyHomePage> {
       seconds: 7,
       navigateAfterSeconds: Info(),
       title: Text(
-        'Welcome To Smart App',
+        'Smart App',
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 27,
+          fontSize: 30,
         ),
       ),
       backgroundColor: Colors.white,
       styleTextUnderTheLoader: new TextStyle(),
       photoSize: 45,
-      loaderColor: Color.fromARGB(255, 35, 11, 93),
+      loaderColor: Color.fromARGB(255, 48, 12, 133),
     );
   }
 }
