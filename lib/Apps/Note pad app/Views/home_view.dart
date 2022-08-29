@@ -18,6 +18,10 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> with RouteAware {
   GlobalKey _fabKey = GlobalKey();
   String _themeType;
+  GlobalKey<ScaffoldState> _scaffoldKey;
+
+  // Local State to display items in listview
+  List<String> _demoData;
 
   @override
   void initState() {
@@ -26,6 +30,13 @@ class _HomeViewState extends State<HomeView> with RouteAware {
     } else {
       _themeType = 'Dark Theme';
     }
+    _demoData = [
+      "Flutter",
+      "React Native",
+      "Cordova/ PhoneGap",
+      "Native Script"
+    ];
+    _scaffoldKey = GlobalKey();
     super.initState();
   }
 
@@ -38,6 +49,7 @@ class _HomeViewState extends State<HomeView> with RouteAware {
 
   @override
   dispose() {
+    _scaffoldKey?.currentState?.dispose();
     super.dispose();
     routeObserver.unsubscribe(this);
   }
@@ -73,12 +85,12 @@ class _HomeViewState extends State<HomeView> with RouteAware {
                 )
               ];
             },
-          )
+          ),
         ],
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -108,7 +120,9 @@ class _HomeViewState extends State<HomeView> with RouteAware {
                   } else {
                     if (snapshot.data.length < 1) {
                       return Center(
-                        child: Text('No Notes, Create New one'),
+                        child: Text(
+                          'No Notes, Create New one (When done, click on the 3 dots icon to change theme and to display your saved notes)',
+                        ),
                       );
                     }
                     return ListView.builder(
@@ -120,9 +134,10 @@ class _HomeViewState extends State<HomeView> with RouteAware {
                               title: Text(snapshot.data[i].title),
                               onTap: () {
                                 Route route = MaterialPageRoute(
-                                    builder: (context) => AddNote(
-                                          note: snapshot.data[i],
-                                        ));
+                                  builder: (context) => AddNote(
+                                    note: snapshot.data[i],
+                                  ),
+                                );
                                 Navigator.push(context, route);
                               },
                             ),
@@ -207,14 +222,15 @@ class _HomeViewState extends State<HomeView> with RouteAware {
     );
 
     Widget positionedClippedChild(Widget child) => Positioned(
-        width: size.width,
-        height: size.height,
-        left: offset.dx,
-        top: offset.dy,
-        child: ClipRRect(
-          borderRadius: radius,
-          child: child,
-        ));
+          width: size.width,
+          height: size.height,
+          left: offset.dx,
+          top: offset.dy,
+          child: ClipRRect(
+            borderRadius: radius,
+            child: child,
+          ),
+        );
 
     return Stack(
       children: [

@@ -43,11 +43,12 @@ dependencies:
   go_router: ^4.2.1
   audioplayers: ^1.0.1
   games_services: ^2.0.8
+  boxy: ^2.0.6+2
 
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icon/smart_app1.png"
+  image_path: "images/smart_app.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
     generate: true

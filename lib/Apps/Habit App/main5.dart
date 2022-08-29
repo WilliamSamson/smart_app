@@ -20,9 +20,9 @@ class MyApp5 extends StatelessWidget {
 
 List<Map<String, dynamic>> habits = [
   {
-    'color': Colors.blue,
-    'title': 'YP',
-    'fulltext': 'Yoga Practice',
+    'color': Color.fromARGB(255, 229, 230, 232),
+    'title': 'NW',
+    'fulltext': 'New Words',
   },
   {
     'color': Colors.red,
@@ -37,9 +37,9 @@ List<Map<String, dynamic>> habits = [
 ];
 List<Map<String, dynamic>> habits2 = [
   {
-    'color': Color(0xff7524ff),
+    'color': Color.fromARGB(255, 16, 28, 192),
     'objectif': 'Learn 5 new words',
-    'progress': '5 from 7 this week'
+    'progress': '0 from 7 this week'
   },
   {
     'color': Color(0xfff03244),
@@ -48,8 +48,8 @@ List<Map<String, dynamic>> habits2 = [
   },
   {
     'color': Color(0xff00d5e2),
-    'objectif': 'Create an App a day',
-    'progress': '6 from 7 this week'
+    'objectif': 'Exercise Today',
+    'progress': '0 from 7 this week'
   },
 ];
 
@@ -72,14 +72,6 @@ class Home extends StatelessWidget {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: "Most Popular",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              fontSize: 25,
-                            ),
-                          ),
-                          TextSpan(
                             text: " Habits",
                             style: TextStyle(
                               fontSize: 25,
@@ -98,12 +90,12 @@ class Home extends StatelessWidget {
                         padding: EdgeInsets.all(9.0),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Color(0xff6f1bff),
+                          color: Color.fromARGB(255, 27, 37, 67),
                           boxShadow: [
                             BoxShadow(
-                                color: Color(0xff6f1bff),
-                                offset: Offset(0, 3),
-                                blurRadius: 5.0),
+                              color: Color.fromARGB(255, 27, 37, 67),
+                              offset: Offset(0, 3),
+                            ),
                           ],
                         ),
                         child: Icon(
@@ -335,8 +327,8 @@ class ListItem extends StatelessWidget {
               ],
             ),
             LinearProgressIndicator(
-              value: .71,
-              backgroundColor: Color(0xff1c232d),
+              value: .0,
+              backgroundColor: Color.fromARGB(255, 121, 125, 131),
               valueColor: AlwaysStoppedAnimation(
                 habits2[id]['color'],
               ),

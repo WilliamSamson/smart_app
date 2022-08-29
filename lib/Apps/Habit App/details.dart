@@ -1,3 +1,5 @@
+import 'package:Smart_app/Apps/Habit%20App/add_words.dart';
+import 'package:Smart_app/Apps/Habit%20App/main5.dart';
 import 'package:flutter/material.dart';
 
 class Details extends StatelessWidget {
@@ -12,12 +14,39 @@ class Details extends StatelessWidget {
             Flexible(
               flex: 3,
               child: Container(
-                padding: EdgeInsets.all(15.0),
+                padding: EdgeInsets.all(8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     SizedBox(
-                      height: 35.0,
+                      height: 10.0,
+                    ),
+                    TextButton.icon(
+                      style: TextButton.styleFrom(
+                        elevation: 15,
+                        primary: Colors.white,
+                        backgroundColor: Color.fromARGB(255, 22, 40, 113),
+                        side: BorderSide(
+                          color: Color.fromARGB(255, 27, 145, 88),
+                          width: 3,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Color.fromARGB(255, 27, 145, 88),
+                      ),
+                      label: const Text(""),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => MyApp5(),
+                          ),
+                        );
+                      },
                     ),
                     Row(
                       children: <Widget>[
@@ -27,7 +56,7 @@ class Details extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
-                              fontSize: 31,
+                              fontSize: 25,
                             ),
                           ),
                         ),
@@ -36,14 +65,21 @@ class Details extends StatelessWidget {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
-                              color: Colors.grey[700],
+                              color: Color.fromARGB(255, 239, 238, 238),
                             ),
                           ),
                           child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AddNote1(),
+                                ),
+                              );
+                            },
                             child: Icon(
                               Icons.edit,
-                              color: Colors.grey[600],
+                              color: Color.fromARGB(255, 228, 221, 221),
                             ),
                           ),
                         )
@@ -53,9 +89,9 @@ class Details extends StatelessWidget {
                       height: 15.0,
                     ),
                     Text(
-                      "5 from 7 this week",
+                      "0 from 7 this week",
                       style: TextStyle(
-                        color: Colors.grey[500],
+                        color: Colors.white,
                         fontSize: 21,
                       ),
                     ),
@@ -63,8 +99,8 @@ class Details extends StatelessWidget {
                       height: 11.0,
                     ),
                     LinearProgressIndicator(
-                      value: .71,
-                      backgroundColor: Color(0xff1c232d),
+                      value: .0,
+                      backgroundColor: Colors.grey[500],
                       valueColor: AlwaysStoppedAnimation(
                         Color(0xff701bff),
                       ),
@@ -75,8 +111,8 @@ class Details extends StatelessWidget {
                     Text(
                       "Strength",
                       style: TextStyle(
-                        color: Colors.grey[500],
-                        fontSize: 21,
+                        color: Colors.white,
+                        fontSize: 18,
                       ),
                     ),
                     SizedBox(
@@ -86,7 +122,7 @@ class Details extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: Text(
-                            "75%",
+                            "0%",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
@@ -95,7 +131,7 @@ class Details extends StatelessWidget {
                           ),
                         ),
                         CircularProgressIndicator(
-                          value: .73,
+                          value: .06,
                           backgroundColor: Colors.grey[600],
                           valueColor: AlwaysStoppedAnimation(
                             Color(0xff701bff),
@@ -103,7 +139,7 @@ class Details extends StatelessWidget {
                         )
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 25),
                     Container(
                       color: Colors.grey[500],
                       height: 1.0,

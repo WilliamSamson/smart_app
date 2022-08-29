@@ -4,15 +4,15 @@ import 'package:Smart_app/Games/Hangman/utilities/game.dart';
 import "package:flutter/material.dart";
 import 'package:Smart_app/Games/Hangman/Screens/Winning.dart';
 
-class Home extends StatefulWidget {
+class Home2 extends StatefulWidget {
   @override
-  State<Home> createState() => _HomeState();
+  State<Home2> createState() => _Home2State();
 }
 
-class _HomeState extends State<Home> {
+class _Home2State extends State<Home2> {
   int Selected_index = 30;
   bool start = true;
-  int tries = 6;
+  int tries = 10;
   String Selected_word = " ";
   String Display = "";
 
@@ -40,7 +40,6 @@ class _HomeState extends State<Home> {
     "S",
     "T",
     "U",
-    "SIzedBox",
     "V",
     "W",
     "X",
@@ -82,7 +81,7 @@ class _HomeState extends State<Home> {
     // Display = "";
     // Correct_word = "";
     getDisplay();
-    tries = 6;
+    tries = 10;
     super.initState();
   }
 
@@ -93,97 +92,100 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBodyBehindAppBar: true,
-        backgroundColor: Color(0xff3A2A8C),
-        body: Column(
-          children: [
-            Expanded(
-              flex: 3,
-              child: Stack(children: [
+      extendBodyBehindAppBar: true,
+      backgroundColor: Color.fromARGB(255, 4, 25, 82),
+      body: Column(
+        children: [
+          Expanded(
+            flex: 3,
+            child: Stack(
+              children: [
                 Visibility(
-                    visible: tries <= 6, child: Image.asset("assets/hang.png")),
+                    visible: tries <= 6, child: Image.asset("images/hang.png")),
                 Visibility(
-                    visible: tries <= 5, child: Image.asset("assets/head.png")),
+                    visible: tries <= 5, child: Image.asset("images/head.png")),
                 Visibility(
-                    visible: tries <= 4, child: Image.asset("assets/body.png")),
+                    visible: tries <= 4, child: Image.asset("images/body.png")),
                 Visibility(
-                    visible: tries <= 3, child: Image.asset("assets/la.png")),
+                    visible: tries <= 3, child: Image.asset("images/la.png")),
                 Visibility(
-                    visible: tries <= 2, child: Image.asset("assets/ra.png")),
+                    visible: tries <= 2, child: Image.asset("images/ra.png")),
                 Visibility(
-                    visible: tries <= 1, child: Image.asset("assets/rl.png")),
+                    visible: tries <= 1, child: Image.asset("images/rl.png")),
                 Visibility(
-                    visible: tries <= 0, child: Image.asset("assets/ll.png")),
-              ]),
+                    visible: tries <= 0, child: Image.asset("images/ll.png")),
+              ],
             ),
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                child: Wrap(
-                  spacing: 15,
-                  alignment: WrapAlignment.center,
-                  children: [
-                    ...List.generate(Display.length, (index) {
-                      var rng = Display[index];
-                      return makeWord(rng);
-                    })
-                  ],
-                ),
+          ),
+          Expanded(
+            flex: 5,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+              child: Wrap(
+                spacing: 8,
+                alignment: WrapAlignment.center,
+                children: [
+                  ...List.generate(Display.length, (index) {
+                    var rng = Display[index];
+                    return makeWord(rng);
+                  })
+                ],
               ),
             ),
-            Expanded(
-              flex: 5,
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 1, horizontal: 20),
-                    // will implement this later to make the last row in center
-                    child: GridView.builder(
-                        itemCount: 27,
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 7,
-                          mainAxisSpacing: 15,
-                          crossAxisSpacing: 3,
-                        ),
-                        itemBuilder: (ctx, index) {
-                          if (index == 21) {
-                            return SizedBox();
-                          } else if (Wrong.contains(myletters[index])) {
-                            return WLetter(myletters[index]);
-                          } else if (Correct.contains(myletters[index])) {
-                            return RLetter(myletters[index]);
-                          } else {
-                            return Letter(
-                              myletters[index],
+          ),
+          Expanded(
+            flex: 8,
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 1, horizontal: 20),
+                  // will implement this later to make the last row in center
+                  child: GridView.builder(
+                    itemCount: 26,
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 6,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 16,
+                    ),
+                    itemBuilder: (ctx, index) {
+                      if (Wrong.contains(myletters[index])) {
+                        return WLetter(myletters[index]);
+                      } else if (Correct.contains(myletters[index])) {
+                        return RLetter(myletters[index]);
+                      } else {
+                        return Letter(
+                          myletters[index],
+                          () {
+                            setState(
                               () {
-                                setState(() {
-                                  if (Selected_index != index) {
-                                    Selected_index = index;
-                                    // print("i changed here ${Selected_index}");
-                                  } else {
-                                    Selected_index = 30;
-                                  }
-                                });
+                                if (Selected_index != index) {
+                                  Selected_index = index;
+                                  // print("i changed here ${Selected_index}");
+                                } else {
+                                  Selected_index = 30;
+                                }
                               },
-                              Selected_index,
-                              index,
                             );
-                          }
-                        }),
+                          },
+                          Selected_index,
+                          index,
+                        );
+                      }
+                    },
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          setState(() {
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        setState(
+                          () {
                             if (Selected_index == 30) {
                             } else if (Selected_word.toUpperCase()
                                 .contains(myletters[Selected_index])) {
@@ -195,62 +197,68 @@ class _HomeState extends State<Home> {
                                   Display, temp, myletters[Selected_index]);
 
                               if (Display == Selected_word.toUpperCase()) {
-                                Navigator.of(context).push(MaterialPageRoute(
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
                                     builder: (BuildContext build) {
-                                  return Winning(Display, true);
-                                }));
+                                      return Winning(Display, true);
+                                    },
+                                  ),
+                                );
                               }
                             } else {
                               Wrong.add(myletters[Selected_index]);
                               tries--;
                               if (tries == 0) {
-                                Navigator.of(context).push(MaterialPageRoute(
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
                                     builder: (BuildContext build) {
-                                  return Winning(Selected_word, false);
-                                }));
+                                      return Winning(Selected_word, false);
+                                    },
+                                  ),
+                                );
                               }
                             }
-                          });
-                          // print("The correct word is: ${Correct}");
-                          // print("The Display word is: ${Display}");
-                          // print("The selected word is: ${Selected_word}");
-                          // print("The wrong word is: ${Wrong}");
-                          Selected_index = 30;
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xff2B1F69),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 28, vertical: 10),
-                          child: Text("Confirm",
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 25)),
-                        ),
-                      ),
-                      Container(
+                          },
+                        );
+                        Selected_index = 30;
+                      },
+                      child: Container(
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 39, 30, 108),
+                          color: Color.fromARGB(255, 59, 67, 186),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 10),
-                        child: Text("Lives remaining :${tries}",
+                            horizontal: 8, vertical: 6),
+                        child: Text("Confirm",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 255, 255, 255),
                                 fontWeight: FontWeight.w900,
-                                fontSize: 23)),
+                                fontSize: 15)),
                       ),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
-        ));
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 59, 67, 186),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 6),
+                      child: Text(
+                        "Lives remaining :${tries}",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 15),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
 
@@ -274,9 +282,11 @@ class _LetterState extends State<Letter> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        setState(() {
-          widget.myfun();
-        });
+        setState(
+          () {
+            widget.myfun();
+          },
+        );
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
@@ -284,19 +294,19 @@ class _LetterState extends State<Letter> {
             padding: const EdgeInsets.all(5),
             color: widget.selected == widget.index
                 ? Color(0xff14B9EF)
-                : Color(0xff2B1F69),
+                : Color.fromARGB(255, 250, 250, 253),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Container(
                 color: widget.selected == widget.index
                     ? Color(0xff14B9EF)
-                    : Color(0xff2B1F69),
+                    : Color.fromARGB(255, 11, 18, 103),
                 child: Align(
                   alignment: Alignment.center,
                   child: Text(this.widget.letter,
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 35,
+                          fontSize: 15,
                           fontWeight: FontWeight.w900)),
                 ),
               ),
@@ -333,7 +343,7 @@ class _WLetterState extends State<WLetter> {
                 child: Text(this.widget.letter,
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 35,
+                        fontSize: 15,
                         fontWeight: FontWeight.w900)),
               ),
             ),
@@ -368,7 +378,7 @@ class _RLetterState extends State<RLetter> {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(15),
+      borderRadius: BorderRadius.circular(10),
       child: Container(
           padding: const EdgeInsets.all(5),
           color: Color(0xff14B9EF),
@@ -381,7 +391,7 @@ class _RLetterState extends State<RLetter> {
                 child: Text(this.widget.letter,
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 35,
+                        fontSize: 20,
                         fontWeight: FontWeight.w900)),
               ),
             ),
@@ -408,14 +418,14 @@ class ChooseLetter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(8),
       child: Container(
-        padding: EdgeInsets.all(20),
-        decoration: BoxDecoration(color: Color(0xff2B1F69)),
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(color: Color.fromARGB(255, 31, 51, 105)),
         child: Text(this.letter,
             style: TextStyle(
                 color: Colors.white,
-                fontSize: 35,
+                fontSize: 15,
                 fontWeight: FontWeight.w900)),
       ),
     );

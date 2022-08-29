@@ -194,7 +194,8 @@ class _AddNoteState extends State<AddNote> {
         widget.note.title = _titleControllor.text;
         widget.note.note = _noteControllor.text;
         helper.updateNote(widget.note);
-      } else {
+      } 
+      else {
         Note note =
             Note(title: _titleControllor.text, note: _noteControllor.text);
         helper.insertNote(note);
