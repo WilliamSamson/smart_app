@@ -27,7 +27,7 @@ dependencies:
   auto_size_text: ^1.1.2
   sqflite:
   path:
-  intl: ^0.15.7
+  flutter_intl: ^0.0.1
   share: ^0.6.1
   smart_app: ^0.0.3
   path_provider: ^2.0.11
@@ -43,16 +43,17 @@ dependencies:
   go_router: ^4.2.1
   audioplayers: ^1.0.1
   games_services: ^2.0.8
-  boxy: ^2.0.6+2
+  intl: ^0.17.0
+  after_layout: ^1.2.0
 
 flutter_icons:
-  android: "launcher_icon"
+  android: "s_icon.png"
   ios: true
-  image_path: "images/smart_app.png"
+  image_path: "images/s_icon.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
     generate: true
-    image_path: "path/to/image.png"
+    image_path: "path/to/s_icon.png"
     background_color: "#hexcode"
     theme_color: "#hexcode"
   windows:
@@ -93,6 +94,8 @@ flutter:
      - Assets/Fonts/Roboto-Regular.ttf
      - images/
      - res/
+     - images/logo.png
+     - images/list.png
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
 

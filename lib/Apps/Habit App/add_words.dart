@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:Smart_app/Apps/Habit%20App/db_halper1.dart';
 import 'package:flutter/material.dart';
 import 'package:Smart_app/Apps/Note pad app/Classes/note.dart';
-import 'package:Smart_app/Apps/Note pad app/Utils/db_halper.dart';
 import 'package:share/share.dart';
 import '../Note pad app/Utils/Utility.dart';
 
@@ -22,7 +22,7 @@ class _AddNote1State extends State<AddNote1> {
   TextEditingController _noteControllor;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final DatabaseHelper helper = DatabaseHelper();
+  final DatabaseHelper1 helper = DatabaseHelper1();
 
   @override
   void initState() {

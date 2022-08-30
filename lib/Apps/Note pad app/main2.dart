@@ -1,6 +1,7 @@
+import 'package:Smart_app/Apps/Note%20pad%20app/Views/breach.dart';
+import 'package:Smart_app/Apps/Note%20pad%20app/Views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'Utils/theme_bloc.dart';
-import 'Views/home_view.dart';
 import 'Classes/theme_data.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -51,7 +52,7 @@ class MyApp2 extends StatelessWidget {
   _getTheme() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool val = prefs.getBool('darkTheme');
-    if(val == null){
+    if (val == null) {
       val = true;
     }
     print(val);

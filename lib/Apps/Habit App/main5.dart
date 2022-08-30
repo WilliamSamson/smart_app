@@ -20,7 +20,7 @@ class MyApp5 extends StatelessWidget {
 
 List<Map<String, dynamic>> habits = [
   {
-    'color': Color.fromARGB(255, 229, 230, 232),
+    'color': Color.fromARGB(255, 67, 95, 152),
     'title': 'NW',
     'fulltext': 'New Words',
   },
@@ -44,7 +44,7 @@ List<Map<String, dynamic>> habits2 = [
   {
     'color': Color(0xfff03244),
     'objectif': 'Get Up Early',
-    'progress': '5 from 7 this week'
+    'progress': '0 from 7 this week'
   },
   {
     'color': Color(0xff00d5e2),

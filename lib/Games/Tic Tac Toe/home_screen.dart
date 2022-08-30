@@ -159,7 +159,8 @@ class _MyHomePageState extends State<MyHomePage> {
             game = Game();
 
             isSwitched = false;
-          });
+          },
+          );
         },
         label: const Text('Restart game'),
         style: ButtonStyle(
