@@ -1,3 +1,4 @@
+import 'package:Nixon/Apps/Habit%20App/details.dart';
 import 'package:Nixon/Screens/home1.dart';
 import 'package:flutter/material.dart';
 import 'package:Nixon/Apps/Note pad app/Utils/db_halper.dart';
@@ -8,14 +9,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 final routeObserver = RouteObserver<PageRoute>();
 final duration = const Duration(milliseconds: 150);
 
-class HomeView extends StatefulWidget {
-  final bool darkThemeEnabled;
-  HomeView(this.darkThemeEnabled);
+class HomeView1 extends StatefulWidget {
   @override
-  _HomeViewState createState() => _HomeViewState();
+  _HomeView1State createState() => _HomeView1State();
 }
 
-class _HomeViewState extends State<HomeView> with RouteAware {
+class _HomeView1State extends State<HomeView1> with RouteAware {
   GlobalKey _fabKey = GlobalKey();
   String _themeType;
   GlobalKey<ScaffoldState> _scaffoldKey;
@@ -25,11 +24,7 @@ class _HomeViewState extends State<HomeView> with RouteAware {
 
   @override
   void initState() {
-    if (!widget.darkThemeEnabled) {
-      _themeType = 'Light Theme';
-    } else {
-      _themeType = 'Dark Theme';
-    }
+
     _demoData = [
       "Flutter",
       "React Native",
@@ -64,29 +59,6 @@ class _HomeViewState extends State<HomeView> with RouteAware {
     databaseHelper.initlizeDatabase();
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget>[
-          PopupMenuButton<bool>(
-            onSelected: (res) {
-              bloc.changeTheme(res);
-              _setPref(res);
-              setState(() {
-                if (_themeType == 'Dark Theme') {
-                  _themeType = 'Light Theme';
-                } else {
-                  _themeType = 'Dark Theme';
-                }
-              });
-            },
-            itemBuilder: (context) {
-              return <PopupMenuEntry<bool>>[
-                PopupMenuItem<bool>(
-                  value: !widget.darkThemeEnabled,
-                  child: Text(_themeType),
-                )
-              ];
-            },
-          ),
-        ],
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -95,7 +67,7 @@ class _HomeViewState extends State<HomeView> with RouteAware {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Home(),
+                    builder: (context) => Details(),
                   ),
                 );
                 Scaffold.of(context).openDrawer();
@@ -121,7 +93,7 @@ class _HomeViewState extends State<HomeView> with RouteAware {
                     if (snapshot.data.length < 1) {
                       return Center(
                         child: Text(
-                          'No Notes, Create New one (When done, click on the 3 dots icon to change theme and to display your saved notes)',
+                          'No Notes, Create New one ',
                         ),
                       );
                     }

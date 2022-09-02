@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:Smart_app/Apps/Note pad app/Classes/note.dart';
-import 'package:Smart_app/Apps/Note pad app/Utils/db_halper.dart';
+import 'package:Nixon/Apps/Note pad app/Classes/note.dart';
+import 'package:Nixon/Apps/Note pad app/Utils/db_halper.dart';
 import 'package:share/share.dart';
 import '../Utils/Utility.dart';
 
@@ -168,7 +168,6 @@ class _AddNoteState extends State<AddNote> {
       content: Text(msg),
       backgroundColor: Color.fromARGB(255, 129, 44, 14),
     );
-    scaffoldKey.currentState.showSnackBar(snackbar);
   }
 
   bool _checkNotNull() {

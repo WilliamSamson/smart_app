@@ -1,7 +1,5 @@
-import 'package:Smart_app/Apps/Habit%20App/main5.dart';
-import 'package:Smart_app/Games/Hangman/Screens/home.dart';
+import 'package:Nixon/Games/Hangman/Screens/home.dart';
 import "package:flutter/material.dart";
-import 'package:Smart_app/Games/Hangman/Screens/select.dart';
 
 class Winning extends StatelessWidget {
   final String winning_word;

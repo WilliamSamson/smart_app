@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:Smart_app/Games/Hangman/utilities/game.dart';
+import 'package:Nixon/Games/Hangman/utilities/game.dart';
 import "package:flutter/material.dart";
-import 'package:Smart_app/Games/Hangman/Screens/Winning.dart';
+import 'package:Nixon/Games/Hangman/Screens/Winning.dart';
 
 class Home2 extends StatefulWidget {
   @override

@@ -1,4 +1,4 @@
-import 'package:Smart_app/Apps/Habit%20App/details.dart';
+import 'package:Nixon/Apps/Habit%20App/details.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -8,7 +8,6 @@ class MyApp5 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Raleway'),
       home: Home(),
       routes: {
@@ -30,9 +29,9 @@ List<Map<String, dynamic>> habits = [
     'fulltext': 'Get Up Early',
   },
   {
-    'color': Colors.cyan,
-    'title': 'NS',
-    'fulltext': 'No Sugar',
+    'color': Color.fromARGB(255, 27, 145, 88),
+    'title': 'ET',
+    'fulltext': 'Exercise Today',
   },
 ];
 List<Map<String, dynamic>> habits2 = [
@@ -47,7 +46,7 @@ List<Map<String, dynamic>> habits2 = [
     'progress': '0 from 7 this week'
   },
   {
-    'color': Color(0xff00d5e2),
+    'color': Color.fromARGB(255, 27, 145, 88),
     'objectif': 'Exercise Today',
     'progress': '0 from 7 this week'
   },
@@ -58,7 +57,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xff131b26),
+        backgroundColor: Color.fromARGB(255, 23, 30, 39),
         body: Container(
           padding: EdgeInsets.only(top: 25.0, left: 25.0),
           child: Column(
@@ -74,8 +73,9 @@ class Home extends StatelessWidget {
                           TextSpan(
                             text: " Habits",
                             style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 30,
+                              color: Color.fromARGB(255, 27, 145, 88),
                             ),
                           ),
                         ],
@@ -87,20 +87,25 @@ class Home extends StatelessWidget {
                     child: InkWell(
                       onTap: () {},
                       child: Container(
-                        padding: EdgeInsets.all(9.0),
+                        padding: EdgeInsets.all(6.0),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color.fromARGB(255, 27, 37, 67),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 27, 37, 67),
-                              offset: Offset(0, 3),
-                            ),
-                          ],
                         ),
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
+                        child: IconButton(
+                          iconSize: 20,
+                          icon: Icon(
+                            Icons.edit,
+                            color: Color.fromARGB(255, 27, 145, 88),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Details(),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ),
@@ -111,10 +116,10 @@ class Home extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 35.0,
+                height: 15.0,
               ),
               Container(
-                height: 150,
+                height: 120,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: habits.length,
@@ -161,7 +166,7 @@ class Home extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 35.0,
+                height: 25.0,
               ),
               Container(
                 height: 90,
@@ -186,7 +191,7 @@ class Home extends StatelessWidget {
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
                           color: day == DateTime.now().day
-                              ? Color(0xff727be8)
+                              ? Color.fromARGB(255, 31, 37, 101)
                               : Color(0xff131b26),
                           borderRadius: BorderRadius.circular(5.0),
                         ),
@@ -215,7 +220,7 @@ class Home extends StatelessWidget {
                               style: TextStyle(
                                   color: day == DateTime.now().day
                                       ? Colors.white
-                                      : Colors.grey[700],
+                                      : Color.fromARGB(255, 126, 126, 126),
                                   fontWeight: day == DateTime.now().day
                                       ? FontWeight.bold
                                       : FontWeight.normal),
@@ -228,7 +233,7 @@ class Home extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 35.0,
+                height: 30.0,
               ),
               RichText(
                 text: TextSpan(
@@ -241,7 +246,7 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     TextSpan(
-                      text: " 5",
+                      text: " 3",
                       style: TextStyle(
                         color: Colors.grey[500],
                         fontSize: 21,
@@ -258,7 +263,7 @@ class Home extends StatelessWidget {
                     return ListItem(id: id);
                   },
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -278,7 +283,7 @@ class ListItem extends StatelessWidget {
         Navigator.pushNamed(context, '/details');
       },
       child: Container(
-        // height: 150,
+        height: 150,
         margin: EdgeInsets.symmetric(vertical: 21.0),
         padding: EdgeInsets.only(right: 25.0),
         child: Column(
@@ -293,12 +298,14 @@ class ListItem extends StatelessWidget {
                     border: id == 0
                         ? Border()
                         : Border.all(
-                            color: Colors.grey[500],
+                            color: Color.fromARGB(255, 189, 184, 184),
                           ),
                   ),
                   child: Icon(
                     Icons.check,
-                    color: id == 0 ? Colors.white : Colors.grey[500],
+                    color: id == 0
+                        ? Colors.white
+                        : Color.fromARGB(255, 115, 114, 114),
                   ),
                 ),
                 SizedBox(width: 15),
@@ -339,3 +346,68 @@ class ListItem extends StatelessWidget {
     );
   }
 }
+    // return InkWell(
+    //   onTap: () {
+    //     Navigator.pushNamed(context, '/details');
+    //   },
+    //   child: Container(
+    //     // height: 150,
+    //     margin: EdgeInsets.symmetric(vertical: 21.0),
+    //     padding: EdgeInsets.only(right: 25.0),
+    //     child: Column(
+    //       children: <Widget>[
+    //         Row(
+    //           children: <Widget>[
+    //             Container(
+    //               padding: EdgeInsets.all(5.0),
+    //               decoration: BoxDecoration(
+    //                 shape: BoxShape.circle,
+    //                 color: id == 0 ? habits2[id]['color'] : Colors.transparent,
+    //                 border: id == 0
+    //                     ? Border()
+    //                     : Border.all(
+    //                         color: Colors.grey[500],
+    //                       ),
+    //               ),
+    //               child: Icon(
+    //                 Icons.check,
+    //                 color: id == 0 ? Colors.white : Colors.grey[500],
+    //               ),
+    //             ),
+    //             SizedBox(width: 15),
+    //             Column(
+    //               crossAxisAlignment: CrossAxisAlignment.start,
+    //               children: <Widget>[
+    //                 Text(
+    //                   habits2[id]['objectif'],
+    //                   style: TextStyle(
+    //                       color: Colors.white,
+    //                       fontWeight: FontWeight.bold,
+    //                       fontSize: 19),
+    //                 ),
+    //                 SizedBox(
+    //                   height: 3,
+    //                 ),
+    //                 Text(
+    //                   habits2[id]['progress'],
+    //                   style: TextStyle(color: Colors.grey[500], fontSize: 17),
+    //                 ),
+    //                 SizedBox(
+    //                   height: 15,
+    //                 ),
+    //               ],
+    //             )
+    //           ],
+    //         ),
+    //         LinearProgressIndicator(
+    //           value: .0,
+    //           backgroundColor: Color.fromARGB(255, 121, 125, 131),
+    //           valueColor: AlwaysStoppedAnimation(
+    //             habits2[id]['color'],
+    //           ),
+    //         ),
+    //       ],
+    //     ),
+    //   ),
+    // );
+

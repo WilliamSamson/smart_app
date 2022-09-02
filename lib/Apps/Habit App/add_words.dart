@@ -1,10 +1,6 @@
-import 'dart:async';
-
-import 'package:Smart_app/Apps/Habit%20App/db_halper1.dart';
+import 'package:Nixon/Apps/Habit%20App/db_halper1.dart';
 import 'package:flutter/material.dart';
-import 'package:Smart_app/Apps/Note pad app/Classes/note.dart';
-import 'package:share/share.dart';
-import '../Note pad app/Utils/Utility.dart';
+import 'package:Nixon/Apps/Note pad app/Classes/note.dart';
 
 class AddNote1 extends StatefulWidget {
   final Note note;
@@ -18,7 +14,6 @@ class _AddNote1State extends State<AddNote1> {
   String title = 'Words Learnt';
 
   List<Widget> icons;
-  TextEditingController _titleControllor;
   TextEditingController _noteControllor;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -26,7 +21,6 @@ class _AddNote1State extends State<AddNote1> {
 
   @override
   void initState() {
-    _titleControllor = TextEditingController();
     _noteControllor = TextEditingController();
 
     _setData();
@@ -35,7 +29,6 @@ class _AddNote1State extends State<AddNote1> {
 
   @override
   void dispose() {
-    _titleControllor.dispose();
     _noteControllor.dispose();
     super.dispose();
   }
@@ -54,9 +47,6 @@ class _AddNote1State extends State<AddNote1> {
         ),
       ];
       title = 'View Note';
-      _titleControllor = TextEditingController(
-        text: widget.note.title,
-      );
       _noteControllor = TextEditingController(text: widget.note.note);
     }
   }
@@ -67,13 +57,12 @@ class _AddNote1State extends State<AddNote1> {
       content: Text(msg),
       backgroundColor: Color.fromARGB(255, 129, 44, 14),
     );
-    scaffoldKey.currentState.showSnackBar(snackbar);
   }
 
   bool _checkNotNull() {
     bool res;
       if (_noteControllor.text.isEmpty) {
-      _showSnakbar('Note cannot be empty');
+      _showSnakbar('Words cannot be empty');
       res = false;
     } else {
       res = true;
@@ -108,7 +97,7 @@ class _AddNote1State extends State<AddNote1> {
         child: ListView(
           children: <Widget>[
             SizedBox(
-              height: 10,
+              height: 30,
             ),
             TextField(
               enabled: _isEditiable ? true : false,

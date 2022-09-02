@@ -1,5 +1,4 @@
-import 'package:Smart_app/Apps/Note%20pad%20app/Views/breach.dart';
-import 'package:Smart_app/Apps/Note%20pad%20app/Views/home_view.dart';
+import 'package:Nixon/Apps/Note%20pad%20app/Views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'Utils/theme_bloc.dart';
 import 'Classes/theme_data.dart';

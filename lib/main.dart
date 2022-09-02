@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'Smart_app/info.dart';
@@ -24,19 +26,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 10,
-      navigateAfterSeconds: Info(),
-      title: Text(
-        'Smart App',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 30,
+        seconds: 10,
+        navigateAfterSeconds: Info(),
+        title: Text(
+          '-Nixon-',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 35,
+          ),
         ),
-      ),
-      backgroundColor: Colors.white,
-      styleTextUnderTheLoader: new TextStyle(),
-      photoSize: 45,
-      loaderColor: Color.fromARGB(255, 48, 12, 133),
-    );
+        backgroundColor: Color.fromARGB(255, 2, 3, 40),
+        styleTextUnderTheLoader: TextStyle(),
+        photoSize: 20,
+        loaderColor: Color.fromARGB(255, 2, 49, 6));
   }
 }

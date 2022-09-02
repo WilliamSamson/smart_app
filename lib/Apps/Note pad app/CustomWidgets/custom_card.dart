@@ -1,6 +1,6 @@
-import 'package:Smart_app/Apps/Note%20pad%20app/Classes/note.dart';
+import 'package:Nixon/Apps/Note%20pad%20app/Classes/note.dart';
 import 'package:flutter/material.dart';
-import 'package:Smart_app/Apps/Note pad app/Views/add_note_view.dart';
+import 'package:Nixon/Apps/Note pad app/Views/add_note_view.dart';
 
 class CustomCard extends StatelessWidget {
   final Note data;

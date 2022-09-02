@@ -1,5 +1,5 @@
-import 'package:Smart_app/Apps/Habit%20App/add_words.dart';
-import 'package:Smart_app/Apps/Habit%20App/main5.dart';
+import 'package:Nixon/Apps/Habit%20App/add_words.dart';
+import 'package:Nixon/Apps/Habit%20App/main5.dart';
 import 'package:flutter/material.dart';
 
 class Details extends StatelessWidget {

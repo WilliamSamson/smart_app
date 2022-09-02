@@ -1,6 +1,8 @@
-import 'package:Smart_app/Apps/Habit%20App/main5.dart';
-import 'package:Smart_app/Apps/Note%20pad%20app/main2.dart';
-import 'package:Smart_app/Games/Hangman/main4.dart';
+import 'package:Nixon/Apps/Art/main8.dart';
+import 'package:Nixon/Apps/Habit%20App/main5.dart';
+import 'package:Nixon/Apps/Note%20pad%20app/main2.dart';
+import 'package:Nixon/Apps/Video%20player/splash_screen.dart';
+import 'package:Nixon/Games/Hangman/main4.dart';
 import 'package:flutter/material.dart';
 import '../Games/Tic Tac Toe/main3.dart';
 
@@ -140,6 +142,80 @@ class Home extends StatelessWidget {
                             ),
                           ],
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            const Padding(
+                              padding: EdgeInsets.only(
+                                left: 16.0,
+                              ),
+                            ),
+                            TextButton.icon(
+                              style: TextButton.styleFrom(
+                                elevation: 15,
+                                primary: Colors.white,
+                                backgroundColor:
+                                    Color.fromARGB(255, 22, 40, 113),
+                                side: BorderSide(
+                                  color: Color.fromARGB(255, 27, 145, 88),
+                                  width: 3,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              icon: Icon(
+                                Icons.play_arrow,
+                                color: Color.fromARGB(255, 27, 145, 88),
+                              ),
+                              label: const Text("Video Player"),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Splash(),
+                                  ),
+                                );
+                              },
+                            ),
+                            SizedBox(
+                              height: 10,
+                              width: 10,
+                            ),
+                            TextButton.icon(
+                              style: TextButton.styleFrom(
+                                elevation: 15,
+                                primary: Colors.white,
+                                backgroundColor:
+                                    Color.fromARGB(255, 22, 40, 113),
+                                side: BorderSide(
+                                  color: Color.fromARGB(255, 27, 145, 88),
+                                  width: 3,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              icon: Icon(
+                                Icons.draw,
+                                color: Color.fromARGB(255, 27, 145, 88),
+                              ),
+                              label: const Text("Draw"),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DrawApp(),
+                                  ),
+                                );
+                              },
+                            ),
+                            SizedBox(
+                              height: 10,
+                              width: 10,
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -257,6 +333,34 @@ class Home extends StatelessWidget {
                                 left: 16.0,
                               ),
                             ),
+                            // TextButton.icon(
+                            //   style: TextButton.styleFrom(
+                            //     elevation: 15,
+                            //     primary: Colors.white,
+                            //     backgroundColor:
+                            //         Color.fromARGB(255, 22, 40, 113),
+                            //     side: BorderSide(
+                            //       color: Color.fromARGB(255, 27, 145, 88),
+                            //       width: 3,
+                            //     ),
+                            //     shape: RoundedRectangleBorder(
+                            //       borderRadius: BorderRadius.circular(30),
+                            //     ),
+                            //   ),
+                            //   icon: Icon(
+                            //     Icons.tab,
+                            //     color: Color.fromARGB(255, 27, 145, 88),
+                            //   ),
+                            //   label: const Text("Teris"),
+                            //   onPressed: () {
+                            //     Navigator.push(
+                            //       context,
+                            //       MaterialPageRoute(
+                            //         builder: (context) => MyApp5(),
+                            //       ),
+                            //     );
+                            //   },
+                            // ),
                             SizedBox(
                               height: 10,
                               width: 10,
