@@ -1,16 +1,12 @@
 import 'package:Nixon/Screens/home1.dart';
 import 'package:flutter/material.dart';
 import 'package:Nixon/Apps/Note pad app/Utils/db_halper.dart';
-import 'package:Nixon/Apps/Note pad app/Utils/theme_bloc.dart';
 import 'package:Nixon/Apps/Note pad app/Views/add_note_view.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 final routeObserver = RouteObserver<PageRoute>();
-final duration = const Duration(milliseconds: 150);
+final duration = Duration(milliseconds: 150);
 
 class HomeView extends StatefulWidget {
-  final bool darkThemeEnabled;
-  HomeView(this.darkThemeEnabled);
   @override
   _HomeViewState createState() => _HomeViewState();
 }
@@ -25,17 +21,7 @@ class _HomeViewState extends State<HomeView> with RouteAware {
 
   @override
   void initState() {
-    if (!widget.darkThemeEnabled) {
-      _themeType = 'Light Theme';
-    } else {
-      _themeType = 'Dark Theme';
-    }
-    _demoData = [
-      "Flutter",
-      "React Native",
-      "Cordova/ PhoneGap",
-      "Native Script"
-    ];
+    _demoData = ["Flutter", "React Native", "Native Script"];
     _scaffoldKey = GlobalKey();
     super.initState();
   }
@@ -54,36 +40,23 @@ class _HomeViewState extends State<HomeView> with RouteAware {
     routeObserver.unsubscribe(this);
   }
 
-  _setPref(bool res) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('darkTheme', res);
-  }
-
   @override
   Widget build(BuildContext context) {
     databaseHelper.initlizeDatabase();
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget>[
-          PopupMenuButton<bool>(
-            onSelected: (res) {
-              bloc.changeTheme(res);
-              _setPref(res);
-              setState(() {
-                if (_themeType == 'Dark Theme') {
-                  _themeType = 'Light Theme';
-                } else {
-                  _themeType = 'Dark Theme';
-                }
-              });
-            },
-            itemBuilder: (context) {
-              return <PopupMenuEntry<bool>>[
-                PopupMenuItem<bool>(
-                  value: !widget.darkThemeEnabled,
-                  child: Text(_themeType),
-                )
-              ];
+        backgroundColor: Color.fromARGB(255, 8, 25, 90),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.refresh),
+            tooltip: 'Reloads page to display notes',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => HomeView(),
+                ),
+              );
             },
           ),
         ],
@@ -100,11 +73,15 @@ class _HomeViewState extends State<HomeView> with RouteAware {
                 );
                 Scaffold.of(context).openDrawer();
               },
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
             );
           },
         ),
-        title: Text('Notes'),
+        title: Text(
+          'Notepad',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Container(
         padding: EdgeInsets.all(8.0),
@@ -141,7 +118,7 @@ class _HomeViewState extends State<HomeView> with RouteAware {
                                 Navigator.push(context, route);
                               },
                             ),
-                            Divider(color: Theme.of(context).accentColor)
+                            Divider(color: Color.fromARGB(255, 25, 97, 28))
                           ],
                         );
                       },
@@ -158,10 +135,11 @@ class _HomeViewState extends State<HomeView> with RouteAware {
   }
 
   Widget _buildFAB(context, {key}) => FloatingActionButton(
+        backgroundColor: Color.fromARGB(255, 8, 25, 90),
         elevation: 0,
         key: key,
         onPressed: () => _onFabTap(context),
-        child: Icon(Icons.add),
+        child: Icon(Icons.create),
       );
 
   _onFabTap(BuildContext context) {

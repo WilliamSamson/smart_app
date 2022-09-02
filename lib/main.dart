@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'Smart_app/info.dart';
@@ -39,6 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Color.fromARGB(255, 2, 3, 40),
         styleTextUnderTheLoader: TextStyle(),
         photoSize: 20,
-        loaderColor: Color.fromARGB(255, 2, 49, 6));
+        loaderColor: Color.fromARGB(255, 22, 79, 27));
   }
 }
