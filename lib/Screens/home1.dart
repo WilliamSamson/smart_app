@@ -1,4 +1,5 @@
 import 'package:Nixon/Apps/Art/main8.dart';
+import 'package:Nixon/Apps/BMI/main9.dart';
 import 'package:Nixon/Apps/Habit%20App/main5.dart';
 import 'package:Nixon/Apps/Note%20pad%20app/main2.dart';
 import 'package:Nixon/Apps/Video%20player/splash_screen.dart';
@@ -55,7 +56,7 @@ class Home extends StatelessWidget {
                 color: Color.fromARGB(255, 17, 19, 110),
                 child: SizedBox(
                   width: 300,
-                  height: 200,
+                  height: 230,
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -213,6 +214,48 @@ class Home extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => DrawApp(),
+                                  ),
+                                );
+                              },
+                            ),
+                            SizedBox(
+                              height: 10,
+                              width: 10,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            const Padding(
+                              padding: EdgeInsets.only(
+                                left: 16.0,
+                              ),
+                            ),
+                            TextButton.icon(
+                              style: TextButton.styleFrom(
+                                elevation: 15,
+                                primary: Colors.white,
+                                backgroundColor:
+                                    Color.fromARGB(255, 22, 40, 113),
+                                side: BorderSide(
+                                  color: Color.fromARGB(255, 27, 145, 88),
+                                  width: 3,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              icon: Icon(
+                                Icons.monitor_weight,
+                                color: Color.fromARGB(255, 27, 145, 88),
+                              ),
+                              label: Text("BMI"),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MyApp9(),
                                   ),
                                 );
                               },
